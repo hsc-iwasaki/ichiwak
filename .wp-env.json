@@ -1,0 +1,23 @@
+{
+  "core": "https://ja.wordpress.org/latest-ja.zip",
+  "phpVersion": "7.4",
+  "plugins": [
+    "https://downloads.wordpress.org/plugin/classic-editor.1.6.2.zip"
+  ],
+  "themes": [],
+  "port": 8000,
+  "env": {
+    "tests": {
+      "port": 8001
+    }
+  },
+  "config": {
+    "WP_DEBUG": false
+  },
+  "mappings": {
+    "wp-content/themes/main/": "./dist/main/",
+    "wp-content/plugins/": "./dist/plugins/",
+    ".htaccess": "./dist/.htaccess",
+    "sql": "./sql"
+  }
+}

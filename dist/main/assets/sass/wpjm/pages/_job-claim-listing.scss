@@ -1,0 +1,39 @@
+.wpjmcl_form_claim_listing,
+.wpjmcl_form_claim_detail {
+    .fieldset-wpjmcl_listing {
+        label {
+            @include sr-only();
+        }
+
+        .field {
+            font-size: 24px;
+
+            strong {
+                color: inherit;
+            }
+        }
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+    }
+}
+
+.job-manager-message + .wpjmcl_form_claim_listing,
+.job-manager-message + .wpjmcl_form_claim_detail {
+    margin-top: 1.5em;
+}
+
+.johunt-filtered-links {
+    border: 1px solid #edeff7;
+    margin-bottom: 20px;
+    text-align: right;
+    @media(min-width: 992px) {
+        border-left: 0;
+    }
+    
+    a {
+        padding: 0.75rem;
+        display: inline-block;
+    }
+}
