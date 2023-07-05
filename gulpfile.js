@@ -17,8 +17,15 @@ function scssTask() {
 
 function phpTask() {
   return gulp
-    .src("./src/*.php")
+    .src(["./src/*.php","./src/**/.php"])
     .pipe(gulp.dest("./dist/main/"))
+    .pipe(browserSync.stream());
+}
+
+function imgTask() {
+  return gulp
+    .src("./src/*.png")
+    .pipe(gulp.dest("./dist/main/img"))
     .pipe(browserSync.stream());
 }
 
@@ -47,24 +54,12 @@ function reload(done) {
 
 function watch(done) {
   gulp.watch("./src/scss/style.scss", scssTask);
-  gulp.watch("./src/*.php", phpTask);
+  gulp.watch(["./src/*.php"], phpTask);
   gulp.watch("./src/js/*.js", jsTask);
   done();
 }
 
-function resize(done) {
-  src("./src/img/**")
-    .pipe(
-      imageResize({
-        crop: true, // リサイズ後に画像をトリミングするかどうか
-        upscale: false, // リサイズ後に画像を拡大するかどうか
-      })
-    )
-    .pipe(dest("./dist/main/img/"));
 
-  done();
-}
-
-const dev = series(sync, parallel(watch, resize));
+const dev = series(sync, parallel(watch));
 
 exports.default = dev;

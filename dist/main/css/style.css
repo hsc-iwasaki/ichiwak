@@ -410,6 +410,7 @@ section {
   grid-template-columns: 380px 380px 380px;
   flex-wrap: wrap;
   column-gap: 20px;
+  row-gap: 20px;
 }
 @media (max-width: 1000px) {
   .site-main__joblist .job-list .job_listings {
@@ -444,10 +445,19 @@ section {
   padding: 0 15px;
   margin: 10px 0;
 }
-.site-main__joblist .job-list .job_listings .job-details .job-listing-loop-job__title {
+.site-main__joblist
+  .job-list
+  .job_listings
+  .job-details
+  .job-listing-loop-job__title {
   color: #000;
 }
-.site-main__joblist .job-list .job_listings .job-details .job-listing-company strong {
+.site-main__joblist
+  .job-list
+  .job_listings
+  .job-details
+  .job-listing-company
+  strong {
   color: #ff5e45;
 }
 .site-main__joblist .job-list .job_listings .job-listing-company-logo {
@@ -509,7 +519,12 @@ section {
   align-items: center;
   display: flex;
 }
-.site-main__knowledge .post-lists .post-content .content-body .entry-header .entry-title {
+.site-main__knowledge
+  .post-lists
+  .post-content
+  .content-body
+  .entry-header
+  .entry-title {
   font-weight: bold;
   font-size: 18px;
 }
@@ -606,4 +621,42 @@ footer .footer-links ul .footer-employer a span {
     width: 50px;
     height: 50px;
   }
+}
+
+/* ここから新たに追加した */
+
+.job-listing-meta {
+  display: none !important;
+}
+.tblThDetail tr td {
+  display: block;
+  width: 100%;
+}
+.tblThDetail tr td:first-of-type {
+  display: inline-block;
+}
+.company-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.company-logo img {
+  height: auto !important;
+}
+
+.handheld-header {
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+.site-content-page-header {
+  height: 50px !important;
+}
+.site-content-page-header .site-content-page-header-inner {
+  display: none !important;
+}
+.site-content-page-header.display-b {
+  height: auto !important;
+}
+.site-content-page-header.display-b .site-content-page-header-inner {
+  display: block !important;
 }
