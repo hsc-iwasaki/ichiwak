@@ -1,0 +1,153 @@
+# Translation of Plugins - Extendify — Gutenberg Patterns and Templates - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Extendify — Gutenberg Patterns and Templates - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-05-13 01:23:14+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Extendify — Gutenberg Patterns and Templates - Stable (latest release)\n"
+
+#: app/Assist/Controllers/SupportArticlesController.php:135
+msgid "Page not found"
+msgstr "ページが見つかりません"
+
+#: app/Assist/Admin.php:72 app/Library/Admin.php:188
+msgid "Partner logo"
+msgstr "パートナーロゴ"
+
+#. translators: %s: The name of the plugin, Extendify
+#: app/Library/AdminPage.php:82
+msgid "%s Banner"
+msgstr "%sのバナー"
+
+#: app/AdminPageRouter.php:151 public/build/extendify-assist.js:1
+#: src/Assist/tours/site-assistant.js:15 src/Assist/tours/site-assistant.js:186
+#: src/Assist/tours/welcome.js:73
+msgid "Site Assistant"
+msgstr "サイトアシスタント"
+
+#. translators: %s: The name of the plugin, Extendify
+#: app/Library/AdminPage.php:94
+msgid "Welcome to %s"
+msgstr "%sへようこそ"
+
+#. translators: %s: Extendify Library term
+#: app/Library/AdminPage.php:116
+msgid "1. Open the %s"
+msgstr "1.%sを開きます"
+
+#: app/Library/AdminPage.php:74 public/build/extendify-assist.js:1
+#: src/Assist/tours/welcome.js:30
+msgid "View Site"
+msgstr "サイトを表示する"
+
+#: app/Onboarding/Controllers/WPController.php:26
+msgid "Invalid Theme.json file"
+msgstr "無効な Theme.json ファイルです"
+
+#: app/Library/AdminPage.php:177
+msgid "You'll find beautiful high fidelity Gutenberg content to add to your pages in no time!"
+msgstr "すぐにページに追加できる、美しくクオリティの高いGutenbergコンテンツを見つけるでしょう!"
+
+#. translators: %s: The name of the plugin, Extendify
+#: app/Library/AdminPage.php:171
+msgid "Search by industry, contents, and design attributes. %s has thousands of best-in-class block patterns. Find what you love and add it to the page - done!"
+msgstr "業種、内容、デザイン属性から探す。%sには、クラス最高のブロックパターンが何千種類もあります。気に入ったものを見つけてページに追加 - これだけで完了します！"
+
+#: app/Library/AdminPage.php:165
+msgid "3. Browse Patterns & Layouts."
+msgstr "3. パターンとレイアウトを閲覧します"
+
+#. translators: %s: The name of the plugin, Extendify
+#: app/Library/AdminPage.php:155
+msgid "%s supports over sixty types with new industries added regularly."
+msgstr "%sは60種類以上のタイプに対応しており、定期的に新しい産業も追加しています。"
+
+#: app/Library/AdminPage.php:149
+msgid "With the library open, you can set your site industry - or type - which will surface the perfect industry-specific patterns and full page layouts to drop onto your website."
+msgstr "ライブラリーを開き、あなたのサイトの業種を設定すると、業種に特化したパターンやフルページレイアウトが表示され、あなたのサイトにドロップできます。"
+
+#: app/Library/AdminPage.php:146
+msgid "2. Choose a site industry"
+msgstr "2. サイトの業種を選択します"
+
+#. translators: %1$s = URL.
+#: app/Library/AdminPage.php:133
+msgid "clicking here"
+msgstr "ここをクリック"
+
+#. translators: %1$s = URL.
+#: app/Library/AdminPage.php:133
+msgid "You may also add a new page with the library opened for you by %1$s."
+msgstr "また、%1$sによって開かれたライブラリの新しいページを追加することもできます。"
+
+#. translators: %s: Extendify Library term
+#: app/Library/AdminPage.php:125
+msgid "When editing a page or post within the block editor, you'll see the %s button within the editor's header"
+msgstr "ブロックエディタ内でページまたは投稿を編集すると、エディタのヘッダー内に%sボタンが表示されます。"
+
+#. translators: %s: The name of the plugin, Extendify
+#: app/Library/AdminPage.php:103
+msgid "%s is a massive library of drop-in block patterns easily customized to your liking. Each pattern is meticulously designed to work with your existing WordPress theme."
+msgstr "%sは、好みに合わせて簡単にカスタマイズできるドロップインブロックパターンの大規模なライブラリです。各パターンは、既存のWordPressテーマで動作するように細心の注意を払って設計されています。"
+
+#: app/Library/Plugin.php:80
+msgid "An unknown error occurred during installation"
+msgstr "インストール中に不明なエラーが発生しました"
+
+#: app/Library/Plugin.php:74
+msgid "There was an error installing your plugin"
+msgstr "プラグインをインストールする際にエラーが発生しました"
+
+#: app/Library/Plugin.php:58
+msgid "You are not allowed to install plugins on this site."
+msgstr "このサイトにプラグインをインストールする権限がありません。"
+
+#: public/build/Library/blocks/library/block.json
+#: src/Library/blocks/library/block.json
+msgctxt "block keyword"
+msgid "layouts"
+msgstr "レイアウト"
+
+#: public/build/Library/blocks/library/block.json
+#: src/Library/blocks/library/block.json
+msgctxt "block keyword"
+msgid "template"
+msgstr "テンプレート"
+
+#: public/build/Library/blocks/library/block.json
+#: src/Library/blocks/library/block.json
+msgctxt "block description"
+msgid "Add block patterns and full page layouts with the Extendify Library."
+msgstr "Extendify Libraryでブロックパターンやフルページレイアウトを追加します。"
+
+#: public/build/Library/blocks/library/block.json
+#: src/Library/blocks/library/block.json
+msgctxt "block title"
+msgid "Pattern Library"
+msgstr "パターン ライブラリー"
+
+#: app/Library/Controllers/PluginController.php:53 app/Library/Plugin.php:36
+msgid "You are not allowed to activate plugins on this site."
+msgstr "このサイトでプラグインを有効化する権限がありません。"
+
+#. Author URI of the plugin
+msgid "https://extendify.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+msgstr "https://extendify.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash"
+
+#. Description of the plugin
+msgid "Extendify is the platform of site design and creation tools for people that want to build a beautiful WordPress website with a library of patterns and full page layouts for the Gutenberg block editor."
+msgstr "Extendifyは、Gutenbergブロックエディタに対応したパターンやフルページレイアウトのライブラリで、美しいWordPressサイトを構築したい人のためのサイトデザイン・制作ツールのプラットフォームです。"
+
+#. Plugin URI of the plugin
+msgid "https://extendify.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+msgstr "https://extendify.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+msgid "Extendify"
+msgstr "Extendify"

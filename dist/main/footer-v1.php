@@ -1,3 +1,5 @@
+</div>
+</div>
 <footer>
     <div class="inner">
         <div class="footer-logo">
@@ -31,7 +33,7 @@
                         <a href="#">お問い合わせ</a>
                     </li>
                     <li>
-                        <a href="<?php echo get_home_url() ?>/register-login#jh-login-tab/">ログイン</a>
+                        <a href="<?php echo get_home_url() ?>/login/">ログイン</a>
                     </li>
                 </ul>
             </nav>
@@ -39,7 +41,7 @@
                 <ul>
                     <?php if (!is_user_logged_in()) : ?>
                         <li class="footer-register">
-                            <a href="<?php echo home_url() ?>/register-login/">
+                            <a href="<?php echo home_url() ?>/register/">
                                 <img src="<?php echo get_template_directory_uri() ?>/img/global/register.png" alt="">
                                 <span class="secondary-menu-text">アカウント登録はこちら</span>
                             </a>
@@ -58,5 +60,6 @@
 </footer>
 <?php wp_footer(); ?>
 </body>
+<script src="<?php echo get_template_directory_uri() ?>/js/bundle.js"></script>
 
 </html>

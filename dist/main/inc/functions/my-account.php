@@ -1,202 +1,211 @@
 <?php
 
-if ( ! function_exists( 'jobhunt_registration_form_fields' ) ) {
-    function jobhunt_registration_form_fields() {
+if (!function_exists('jobhunt_registration_form_fields')) {
+    function jobhunt_registration_form_fields()
+    {
 
         ob_start();
-            ?>
-            <div class="entry-header">
-                <h3 class="headline"><?php echo apply_filters( 'jobhunt_register_form_header_title', esc_html__( 'Register','jobhunt' ) ); ?></h3>
-            </div>
+?>
+        <div class="entry-header">
+            <h3 class="headline"><?php echo apply_filters('jobhunt_register_form_header_title', esc_html__('Register', 'jobhunt')); ?></h3>
+        </div>
 
-            <?php
-            // show any error messages after form submission
-            jobhunt_show_error_messages(); 
+        <?php
+        // show any error messages after form submission
+        jobhunt_show_error_messages();
 
-            // show any success messages after form submission
-            jobhunt_show_success_messages(); 
+        // show any success messages after form submission
+        jobhunt_show_success_messages();
 
-            do_action( 'jobhunt_registration_form_before' ); ?>
+        do_action('jobhunt_registration_form_before'); ?>
 
-            <form id="jobhunt_registration_form" class="jobhunt_registration_form" action="#" method="POST">
-                <p class="status"></p>
-                <fieldset>
-                    <?php do_action( 'jobhunt_registration_form_fields_before' ); ?>
-                    <?php if( apply_filters( 'jobhunt_register_user_login_enabled', true ) ) : ?>
-                        <p>
-                            <label for="jobhunt_register_user_login"><?php esc_html_e( 'ユーザー名', 'jobhunt' ); ?>
-                                <input name="jobhunt_user_login" id="jobhunt_register_user_login" class="required" type="text"/>
-                            </label>
-                        </p>
-                    <?php endif; ?>
+        <form id="jobhunt_registration_form" class="jobhunt_registration_form" action="#" method="POST">
+            <p class="status"></p>
+            <fieldset>
+                <?php do_action('jobhunt_registration_form_fields_before'); ?>
+                <?php if (apply_filters('jobhunt_register_user_login_enabled', true)) : ?>
                     <p>
-                        <label for="jobhunt_register_user_email"><?php esc_html_e( 'メールアドレス', 'jobhunt' ); ?>
-                            <input name="jobhunt_user_email" id="jobhunt_register_user_email" class="required" type="email"/>
+                        <label for="jobhunt_register_user_login"><?php esc_html_e('ユーザー名', 'jobhunt'); ?>
+                            <input name="jobhunt_user_login" id="jobhunt_register_user_login" class="required" type="text" />
                         </label>
                     </p>
-                    <p class="hidden">
-                        <label for="confirm_email"><?php echo esc_html__( 'Please leave this field empty', 'jobhunt' ); ?></label>
-                        <input type="text" name="confirm_email" id="confirm_email" class="input" value="">
-                    </p>
+                <?php endif; ?>
+                <p>
+                    <label for="jobhunt_register_user_email"><?php esc_html_e('メールアドレス', 'jobhunt'); ?>
+                        <input name="jobhunt_user_email" id="jobhunt_register_user_email" class="required" type="email" />
+                    </label>
+                </p>
+                <p class="hidden">
+                    <label for="confirm_email"><?php echo esc_html__('Please leave this field empty', 'jobhunt'); ?></label>
+                    <input type="text" name="confirm_email" id="confirm_email" class="input" value="">
+                </p>
 
-                    <?php if( apply_filters( 'jobhunt_register_user_password_enabled', false ) ) : ?>
-                        <p>
-                            <label for="jobhunt_register_user_password"><?php esc_html_e( 'パスワード', 'jobhunt' ); ?>
-                                <input name="jobhunt_user_pass" id="jobhunt_register_user_password" minlength="8" required class="required" type="password"/>
-                            </label>
-                        </p>
-                    <?php endif; ?>
-                    <?php if( apply_filters( 'jobhunt_register_user_role_enabled', true ) && jobhunt_is_wp_job_manager_activated() ) : ?>
-                        <p>
-                            <label for="jobhunt_register_user_role"><?php echo esc_html__( '登録種別', 'jobhunt' ); ?></label>
-                            <select name="jobhunt_user_role" id="jobhunt_register_user_role" class="input chosen-select">
-                                <option value="candidate"><?php echo esc_html__( 'Candidate', 'jobhunt' ); ?></option>
-                                <option value="employer"><?php echo esc_html__( 'Employer', 'jobhunt' ); ?></option>
-                            </select>
-                        </p>
-                    <?php endif; ?>
-                    <?php do_action( 'jobhunt_registration_form_fields_after' ); ?>
+                <?php if (apply_filters('jobhunt_register_user_password_enabled', false)) : ?>
                     <p>
-                        <input type="hidden" name="jobhunt_register_nonce" value="<?php echo wp_create_nonce('jobhunt-register-nonce'); ?>"/>
-                        <input type="hidden" name="jobhunt_register_check" value="1"/>
-                        <?php  wp_nonce_field( 'ajax-register-nonce', 'register-security' );  ?>
-                        <input type="submit" value="<?php echo esc_attr__( 'Register', 'jobhunt' ); ?>"/>
+                        <label for="jobhunt_register_user_password"><?php esc_html_e('パスワード', 'jobhunt'); ?>
+                            <input name="jobhunt_user_pass" id="jobhunt_register_user_password" minlength="8" required class="required" type="password" />
+                        </label>
                     </p>
-                </fieldset>
-            </form>
+                <?php endif; ?>
+                <?php if (apply_filters('jobhunt_register_user_role_enabled', true) && jobhunt_is_wp_job_manager_activated()) : ?>
+                    <p style="display:none;">
+                        <label for="jobhunt_register_user_role"><?php echo esc_html__('登録種別', 'jobhunt'); ?></label>
+                        <select name="jobhunt_user_role" id="jobhunt_register_user_role" class="input chosen-select">
+                            <?php if (is_page("register")) : ?>
+                                <option value="candidate"><?php echo esc_html__('Candidate', 'jobhunt'); ?></option>
+                            <?php elseif (is_page("register-employer")) : ?>
+                                <option value="employer"><?php echo esc_html__('Employer', 'jobhunt'); ?></option>
+                            <? endif; ?>
+                        </select>
+                    </p>
+                <?php endif; ?>
+                <?php do_action('jobhunt_registration_form_fields_after'); ?>
+                <p>
+                    <input type="hidden" name="jobhunt_register_nonce" value="<?php echo wp_create_nonce('jobhunt-register-nonce'); ?>" />
+                    <input type="hidden" name="jobhunt_register_check" value="1" />
+                    <?php wp_nonce_field('ajax-register-nonce', 'register-security');  ?>
+                    <input type="submit" value="<?php echo esc_attr__('Register', 'jobhunt'); ?>" />
+                </p>
+            </fieldset>
+        </form>
 
-            <?php do_action( 'jobhunt_registration_form_after' );
+    <?php do_action('jobhunt_registration_form_after');
 
         return ob_get_clean();
     }
 }
 
-if ( ! function_exists( 'jobhunt_login_form_fields' ) ) {
-    function jobhunt_login_form_fields() {
+if (!function_exists('jobhunt_login_form_fields')) {
+    function jobhunt_login_form_fields()
+    {
 
         ob_start();
-            ?>
-            <div class="entry-header">
-                <h3 class="headline"><?php echo apply_filters( 'jobhunt_login_form_header_title', esc_html__( 'ログイン', 'jobhunt') ); ?></h3>
-            </div>
+    ?>
+        <div class="entry-header">
+            <h3 class="headline"><?php echo apply_filters('jobhunt_login_form_header_title', esc_html__('ログイン', 'jobhunt')); ?></h3>
+        </div>
 
-            <?php
-            // show any error messages after form submission
-            jobhunt_show_error_messages();
+        <?php
+        // show any error messages after form submission
+        jobhunt_show_error_messages();
 
-            // show any success messages after form submission
-            jobhunt_show_success_messages(); 
+        // show any success messages after form submission
+        jobhunt_show_success_messages();
 
-            do_action( 'jobhunt_login_form_before' ); ?>
+        do_action('jobhunt_login_form_before'); ?>
 
-            <form id="jobhunt_login_form"  class="jobhunt_login_form" action="#" method="post">
-                <p class="status"></p>
-                <fieldset>
-                    <p>
-                        <label for="jobhunt_user_login"><?php echo esc_html__( 'ユーザ名またはメールアドレス', 'jobhunt' ); ?>
-                            <input name="jobhunt_user_login" id="jobhunt_user_login" class="required" type="text"/>
-                        </label>
-                    </p>
-                    <p>
-                        <label for="jobhunt_user_pass"><?php echo esc_html__( 'パスワード', 'jobhunt' ); ?>
-                            <input name="jobhunt_user_pass" id="jobhunt_user_pass" class="required" type="password"/>
-                        </label>
-                    </p>
-                    <p>
-                        <input type="hidden" id="jobhunt_login_nonce" name="jobhunt_login_nonce" value="<?php echo wp_create_nonce('jobhunt-login-nonce'); ?>"/>
-                        <input type="hidden" name="jobhunt_login_check" value="1"/>
-                        <?php  wp_nonce_field( 'ajax-login-nonce', 'login-security' );  ?>
-                        <input id="jobhunt_login_submit" type="submit" value="<?php echo esc_attr__( 'Login','jobhunt' ); ?>"/>
-                    </p>
-                    <p><a href="<?php echo esc_url( wp_lostpassword_url( home_url( '/' ) ) ); ?>" title="<?php echo esc_attr__( 'Lost Password?', 'jobhunt' ); ?>"><?php echo esc_html__( 'パスワードをお忘れの方', 'jobhunt' ); ?></a></p>
-                </fieldset>
-            </form>
+        <form id="jobhunt_login_form" class="jobhunt_login_form" action="#" method="post">
+            <p class="status"></p>
+            <fieldset>
+                <p>
+                    <label for="jobhunt_user_login"><?php echo esc_html__('ユーザ名またはメールアドレス', 'jobhunt'); ?>
+                        <input name="jobhunt_user_login" id="jobhunt_user_login" class="required" type="text" />
+                    </label>
+                </p>
+                <p>
+                    <label for="jobhunt_user_pass"><?php echo esc_html__('パスワード', 'jobhunt'); ?>
+                        <input name="jobhunt_user_pass" id="jobhunt_user_pass" class="required" type="password" />
+                    </label>
+                </p>
+                <p class="login-btn">
+                    <input type="hidden" id="jobhunt_login_nonce" name="jobhunt_login_nonce" value="<?php echo wp_create_nonce('jobhunt-login-nonce'); ?>" />
+                    <input type="hidden" name="jobhunt_login_check" value="1" />
+                    <?php wp_nonce_field('ajax-login-nonce', 'login-security');  ?>
+                    <input id="jobhunt_login_submit" type="submit" value="<?php echo esc_attr__('Login', 'jobhunt'); ?>" />
+                </p>
+                <p class="lost-pass-btn">
+                    <a href="<?php echo esc_url(wp_lostpassword_url(home_url('/'))); ?>" title="<?php echo esc_attr__('Lost Password?', 'jobhunt'); ?>"><?php echo esc_html__('パスワードをお忘れの方', 'jobhunt'); ?></a>
+                    <a href="<?php echo get_home_url() ?>/register">はじめての方</a>
+                </p>
+            </fieldset>
+        </form>
 
-            <?php do_action( 'jobhunt_login_form_after' );
+<?php do_action('jobhunt_login_form_after');
 
         return ob_get_clean();
     }
 }
 
 // register a new user
-if ( ! function_exists( 'jobhunt_add_new_member' ) ) {
-    function jobhunt_add_new_member() {
-        if ( isset( $_POST["jobhunt_register_check"] ) && wp_verify_nonce( $_POST['jobhunt_register_nonce'], 'jobhunt-register-nonce' ) ) {
-            if ( ! isset( $_POST['confirm_email'] ) || $_POST['confirm_email'] !== '' ) {
-                home_url( '/' );
+if (!function_exists('jobhunt_add_new_member')) {
+    function jobhunt_add_new_member()
+    {
+        if (isset($_POST["jobhunt_register_check"]) && wp_verify_nonce($_POST['jobhunt_register_nonce'], 'jobhunt-register-nonce')) {
+            if (!isset($_POST['confirm_email']) || $_POST['confirm_email'] !== '') {
+                home_url('/');
                 exit;
             }
 
             $default_role = 'subscriber';
-            $available_roles = array( 'subscriber' );
+            $available_roles = array('subscriber');
 
-            if ( jobhunt_is_woocommerce_activated() ) {
+            if (jobhunt_is_woocommerce_activated()) {
                 $available_roles[] = 'customer';
                 $default_role = 'customer';
             }
 
-            if ( jobhunt_is_wp_job_manager_activated() ) {
+            if (jobhunt_is_wp_job_manager_activated()) {
                 $available_roles[] = 'employer';
             }
 
-            if ( jobhunt_is_wp_resume_manager_activated() ) {
+            if (jobhunt_is_wp_resume_manager_activated()) {
                 $available_roles[] = 'candidate';
                 $default_role = 'candidate';
             }
 
-            $user_email     = sanitize_email( $_POST["jobhunt_user_email"] );
-            $user_role      = ! empty( $_POST["jobhunt_user_role"] ) && in_array( $_POST["jobhunt_user_role"], $available_roles ) ? sanitize_text_field( $_POST["jobhunt_user_role"] ) : $default_role;
+            $user_email     = sanitize_email($_POST["jobhunt_user_email"]);
+            $user_role      = !empty($_POST["jobhunt_user_role"]) && in_array($_POST["jobhunt_user_role"], $available_roles) ? sanitize_text_field($_POST["jobhunt_user_role"]) : $default_role;
 
-            if ( ! empty( $_POST["jobhunt_user_login"] ) ) {
-                $user_login = sanitize_user( $_POST["jobhunt_user_login"] );
+            if (!empty($_POST["jobhunt_user_login"])) {
+                $user_login = sanitize_user($_POST["jobhunt_user_login"]);
             } else {
-                $user_login = sanitize_user( current( explode( '@', $user_email ) ), true );
+                $user_login = sanitize_user(current(explode('@', $user_email)), true);
 
                 // Ensure username is unique.
                 $append     = 1;
                 $o_user_login = $user_login;
 
-                while ( username_exists( $user_login ) ) {
+                while (username_exists($user_login)) {
                     $user_login = $o_user_login . $append;
                     $append++;
                 }
             }
 
-            if( username_exists( $user_login ) && apply_filters( 'jobhunt_register_user_login_enabled', true ) ) {
+            if (username_exists($user_login) && apply_filters('jobhunt_register_user_login_enabled', true)) {
                 // Username already registered
-                jobhunt_form_errors()->add('username_unavailable', esc_html__('Username already taken','jobhunt'));
+                jobhunt_form_errors()->add('username_unavailable', esc_html__('Username already taken', 'jobhunt'));
             }
-            if( ! validate_username( $user_login ) && apply_filters( 'jobhunt_register_user_login_enabled', true ) ) {
+            if (!validate_username($user_login) && apply_filters('jobhunt_register_user_login_enabled', true)) {
                 // invalid username
-                jobhunt_form_errors()->add('username_invalid', esc_html__('Invalid username','jobhunt'));
+                jobhunt_form_errors()->add('username_invalid', esc_html__('Invalid username', 'jobhunt'));
             }
-            if( $user_login == '' && apply_filters( 'jobhunt_register_user_login_enabled', true ) ) {
+            if ($user_login == '' && apply_filters('jobhunt_register_user_login_enabled', true)) {
                 // empty username
-                jobhunt_form_errors()->add('username_empty', esc_html__('Please enter a username','jobhunt'));
+                jobhunt_form_errors()->add('username_empty', esc_html__('Please enter a username', 'jobhunt'));
             }
-            if( ! is_email( $user_email ) ) {
+            if (!is_email($user_email)) {
                 //invalid email
-                jobhunt_form_errors()->add('email_invalid', esc_html__('Invalid email','jobhunt'));
+                jobhunt_form_errors()->add('email_invalid', esc_html__('Invalid email', 'jobhunt'));
             }
-            if( email_exists( $user_email ) ) {
+            if (email_exists($user_email)) {
                 //Email address already registered
-                jobhunt_form_errors()->add('email_used', esc_html__('Email already registered','jobhunt'));
+                jobhunt_form_errors()->add('email_used', esc_html__('Email already registered', 'jobhunt'));
             }
 
             $password = wp_generate_password();
             $password_generated = true;
 
-            if ( apply_filters( 'jobhunt_register_user_password_enabled', false ) && !empty( $_POST['jobhunt_user_pass'] ) ) {
+            if (apply_filters('jobhunt_register_user_password_enabled', false) && !empty($_POST['jobhunt_user_pass'])) {
                 $password = $_POST['jobhunt_user_pass'];
                 $password_generated = false;
             }
 
-            do_action( 'jobhunt_register_form_custom_field_validation' );
+            do_action('jobhunt_register_form_custom_field_validation');
 
             $errors = jobhunt_form_errors()->get_error_messages();
 
             // only create the user in if there are no errors
-            if( empty( $errors ) ) {
+            if (empty($errors)) {
 
                 $new_user_data = array(
                     'user_login'        => $user_login,
@@ -205,14 +214,14 @@ if ( ! function_exists( 'jobhunt_add_new_member' ) ) {
                     'role'              => $user_role,
                 );
 
-                $new_user_id = wp_insert_user( $new_user_data );
+                $new_user_id = wp_insert_user($new_user_data);
 
-                if( $new_user_id ) {
+                if ($new_user_id) {
                     // send an email to the admin alerting them of the registration
-                    if( apply_filters( 'jobhunt_wc_new_user_notification', false ) && jobhunt_is_woocommerce_activated() ) {
-                        wc()->mailer()->customer_new_account( $new_user_id, $new_user_data, $password_generated );
+                    if (apply_filters('jobhunt_wc_new_user_notification', false) && jobhunt_is_woocommerce_activated()) {
+                        wc()->mailer()->customer_new_account($new_user_id, $new_user_data, $password_generated);
                     } else {
-                        wp_new_user_notification( $new_user_id, null, 'both' );
+                        wp_new_user_notification($new_user_id, null, 'both');
                     }
 
                     // log the new user in
@@ -221,30 +230,30 @@ if ( ! function_exists( 'jobhunt_add_new_member' ) ) {
                     $creds['user_password'] = $password;
                     $creds['remember'] = true;
 
-                    if( $password_generated ) {
-                        jobhunt_form_success()->add('verify_user', esc_html__('Account created successfully. Please check your email to create your account password','jobhunt'));
+                    if ($password_generated) {
+                        jobhunt_form_success()->add('verify_user', esc_html__('Account created successfully. Please check your email to create your account password', 'jobhunt'));
                     } else {
-                        $user = wp_signon( $creds, false );
+                        $user = wp_signon($creds, false);
                         // send the newly created user to the home page after logging them in
-                        if ( is_wp_error( $user ) ) {
-                            echo wp_kses_post( $user->get_error_message() );
+                        if (is_wp_error($user)) {
+                            echo wp_kses_post($user->get_error_message());
                         } else {
-                            $oUser = get_user_by( 'login', $creds['user_login'] );
-                            $aUser = get_object_vars( $oUser );
+                            $oUser = get_user_by('login', $creds['user_login']);
+                            $aUser = get_object_vars($oUser);
                             $sRole = $aUser['roles'][0];
-                            if( get_option( 'job_manager_job_dashboard_page_id' ) ) {
-                                $job_url = get_permalink( get_option( 'job_manager_job_dashboard_page_id' ) );
+                            if (get_option('job_manager_job_dashboard_page_id')) {
+                                $job_url = get_permalink(get_option('job_manager_job_dashboard_page_id'));
                             } else {
-                                $job_url = home_url( '/' );
+                                $job_url = home_url('/');
                             }
 
-                            if( get_option( 'resume_manager_candidate_dashboard_page_id' ) ) {
-                                $resume_url = get_permalink( get_option( 'resume_manager_candidate_dashboard_page_id' ) );
+                            if (get_option('resume_manager_candidate_dashboard_page_id')) {
+                                $resume_url = get_permalink(get_option('resume_manager_candidate_dashboard_page_id'));
                             } else {
-                                $resume_url= home_url( '/' );
+                                $resume_url = home_url('/');
                             }
 
-                            switch( $sRole ) {
+                            switch ($sRole) {
                                 case 'candidate':
                                     $redirect_url = $resume_url;
                                     break;
@@ -253,11 +262,11 @@ if ( ! function_exists( 'jobhunt_add_new_member' ) ) {
                                     break;
 
                                 default:
-                                    $redirect_url = home_url( '/' );
+                                    $redirect_url = home_url('/');
                                     break;
                             }
 
-                            wp_safe_redirect( apply_filters( 'jobhunt_redirect_link_after_register', $redirect_url, $user ) );
+                            wp_safe_redirect(apply_filters('jobhunt_redirect_link_after_register', $redirect_url, $user));
                             exit;
                         }
                     }
@@ -267,35 +276,36 @@ if ( ! function_exists( 'jobhunt_add_new_member' ) ) {
     }
 }
 
-add_action( 'wp_loaded', 'jobhunt_add_new_member' );
+add_action('wp_loaded', 'jobhunt_add_new_member');
 
 // logs a member in after submitting a form
-if ( ! function_exists( 'jobhunt_login_member' ) ) {
-    function jobhunt_login_member() {
-        if( isset( $_POST['jobhunt_login_check'] )  && wp_verify_nonce( $_POST['jobhunt_login_nonce'], 'jobhunt-login-nonce') ) {
+if (!function_exists('jobhunt_login_member')) {
+    function jobhunt_login_member()
+    {
+        if (isset($_POST['jobhunt_login_check'])  && wp_verify_nonce($_POST['jobhunt_login_nonce'], 'jobhunt-login-nonce')) {
 
             // this returns the user ID and other info from the user name
-            if ( is_email( $_POST['jobhunt_user_login'] ) ) {
-                $user =  get_user_by( 'email', $_POST['jobhunt_user_login'] );
+            if (is_email($_POST['jobhunt_user_login'])) {
+                $user =  get_user_by('email', $_POST['jobhunt_user_login']);
             } else {
-                $user =  get_user_by( 'login', $_POST['jobhunt_user_login'] );
+                $user =  get_user_by('login', $_POST['jobhunt_user_login']);
             }
 
-            if( ! $user ) {
+            if (!$user) {
                 // if the user name doesn't exist
-                jobhunt_form_errors()->add('empty_username', esc_html__('Invalid username or email address','jobhunt'));
+                jobhunt_form_errors()->add('empty_username', esc_html__('Invalid username or email address', 'jobhunt'));
             }
 
-            if( ! isset($_POST['jobhunt_user_pass']) || $_POST['jobhunt_user_pass'] == '' ) {
+            if (!isset($_POST['jobhunt_user_pass']) || $_POST['jobhunt_user_pass'] == '') {
                 // if no password was entered
-                jobhunt_form_errors()->add('empty_password', esc_html__('Please enter a password','jobhunt'));
+                jobhunt_form_errors()->add('empty_password', esc_html__('Please enter a password', 'jobhunt'));
             }
 
-            if( ! empty( $user ) && isset( $_POST['jobhunt_user_pass'] ) && ! empty( $_POST['jobhunt_user_pass'] ) ){
+            if (!empty($user) && isset($_POST['jobhunt_user_pass']) && !empty($_POST['jobhunt_user_pass'])) {
                 // check the user's login with their password
-                if( ! wp_check_password( $_POST['jobhunt_user_pass'], $user->user_pass, $user->ID ) ) {
+                if (!wp_check_password($_POST['jobhunt_user_pass'], $user->user_pass, $user->ID)) {
                     // if the password is incorrect for the specified user
-                    jobhunt_form_errors()->add('empty_password', esc_html__('Incorrect password','jobhunt'));
+                    jobhunt_form_errors()->add('empty_password', esc_html__('Incorrect password', 'jobhunt'));
                 }
             }
 
@@ -303,35 +313,35 @@ if ( ! function_exists( 'jobhunt_login_member' ) ) {
             $errors = jobhunt_form_errors()->get_error_messages();
 
             // only log the user in if there are no errors
-            if( empty( $errors ) ) {
+            if (empty($errors)) {
 
                 $creds = array();
                 $creds['user_login'] = $user->user_login;
                 $creds['user_password'] = $_POST['jobhunt_user_pass'];
                 $creds['remember'] = true;
 
-                $user = wp_signon( $creds, false );
+                $user = wp_signon($creds, false);
                 // send the newly created user to the home page after logging them in
-                if ( is_wp_error( $user ) ){
-                    echo wp_kses_post( $user->get_error_message() );
+                if (is_wp_error($user)) {
+                    echo wp_kses_post($user->get_error_message());
                 } else {
-                    $oUser = get_user_by( 'login', $creds['user_login'] );
-                    $aUser = get_object_vars( $oUser );
+                    $oUser = get_user_by('login', $creds['user_login']);
+                    $aUser = get_object_vars($oUser);
                     $sRole = $aUser['roles'][0];
 
-                    if( get_option( 'job_manager_job_dashboard_page_id' ) ) {
-                        $job_url = get_permalink( get_option( 'job_manager_job_dashboard_page_id' ) );
+                    if (get_option('job_manager_job_dashboard_page_id')) {
+                        $job_url = get_permalink(get_option('job_manager_job_dashboard_page_id'));
                     } else {
-                        $job_url = home_url( '/' );
+                        $job_url = home_url('/');
                     }
 
-                    if( get_option( 'resume_manager_candidate_dashboard_page_id' ) ) {
-                        $resume_url = get_permalink( get_option( 'resume_manager_candidate_dashboard_page_id' ) );
+                    if (get_option('resume_manager_candidate_dashboard_page_id')) {
+                        $resume_url = get_permalink(get_option('resume_manager_candidate_dashboard_page_id'));
                     } else {
-                        $resume_url= home_url( '/' );
+                        $resume_url = home_url('/');
                     }
 
-                    switch( $sRole ) {
+                    switch ($sRole) {
                         case 'candidate':
                             $redirect_url = $resume_url;
                             break;
@@ -340,11 +350,11 @@ if ( ! function_exists( 'jobhunt_login_member' ) ) {
                             break;
 
                         default:
-                            $redirect_url = home_url( '/' );
+                            $redirect_url = home_url('/');
                             break;
                     }
 
-                    wp_safe_redirect( apply_filters( 'jobhunt_redirect_link_after_login', $redirect_url, $user ) );
+                    wp_safe_redirect(apply_filters('jobhunt_redirect_link_after_login', $redirect_url, $user));
                 }
                 exit;
             }
@@ -352,39 +362,43 @@ if ( ! function_exists( 'jobhunt_login_member' ) ) {
     }
 }
 
-add_action( 'wp_loaded', 'jobhunt_login_member' );
+add_action('wp_loaded', 'jobhunt_login_member');
 
 // used for tracking error messages
-function jobhunt_form_errors(){
+function jobhunt_form_errors()
+{
     static $wp_error; // Will hold global variable safely
-    return isset( $wp_error ) ? $wp_error : ( $wp_error = new WP_Error( null, null, null ) );
+    return isset($wp_error) ? $wp_error : ($wp_error = new WP_Error(null, null, null));
 }
 
-function jobhunt_show_error_messages() {
-    if( $codes = jobhunt_form_errors()->get_error_codes() ) {
+function jobhunt_show_error_messages()
+{
+    if ($codes = jobhunt_form_errors()->get_error_codes()) {
         echo '<div class="notification closeable error">';
-            // Loop error codes and display errors
-           foreach( $codes as $code ) {
-                $message = jobhunt_form_errors()->get_error_message( $code );
-                echo '<span class="error">' . $message . '</span><br/>';
-            }
+        // Loop error codes and display errors
+        foreach ($codes as $code) {
+            $message = jobhunt_form_errors()->get_error_message($code);
+            echo '<span class="error">' . $message . '</span><br/>';
+        }
         echo '</div>';
     }
 }
 
-function jobhunt_form_success(){
+function jobhunt_form_success()
+{
     static $wp_error; // Will hold global variable safely
-    return isset( $wp_error ) ? $wp_error : ( $wp_error = new WP_Error( null, null, null ) );
+    return isset($wp_error) ? $wp_error : ($wp_error = new WP_Error(null, null, null));
 }
 
-function jobhunt_show_success_messages() {
-    if( $codes = jobhunt_form_success()->get_error_codes() ) {
+function jobhunt_show_success_messages()
+{
+    if ($codes = jobhunt_form_success()->get_error_codes()) {
         echo '<div class="notification closeable success">';
-            // Loop success codes and display success
-           foreach( $codes as $code ) {
-                $message = jobhunt_form_success()->get_error_message( $code );
-                echo '<span class="success">' . $message . '</span><br/>';
-            }
+        // Loop success codes and display success
+        foreach ($codes as $code) {
+            $message = jobhunt_form_success()->get_error_message($code);
+            echo '<span class="success">' . $message . '</span><br/>';
+        }
         echo '</div>';
     }
 }

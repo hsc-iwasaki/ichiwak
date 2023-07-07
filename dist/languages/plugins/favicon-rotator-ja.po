@@ -1,0 +1,101 @@
+# Translation of Plugins - Favicon Rotator - Development (trunk) in Japanese
+# This file is distributed under the same license as the Plugins - Favicon Rotator - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-12-24 09:42:53+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Favicon Rotator - Development (trunk)\n"
+
+#. Plugin Name of the plugin
+#: model.php:481
+msgid "Favicon Rotator"
+msgstr "Favicon Rotator"
+
+#. Plugin URI of the plugin
+msgid "http://archetyped.com/tools/favicon-rotator/"
+msgstr "https://archetyped.com/tools/favicon-rotator/"
+
+#. Author of the plugin
+msgid "Archetyped"
+msgstr "Archetyped"
+
+#. Author URI of the plugin
+msgid "http://archetyped.com"
+msgstr "https://archetyped.com"
+
+#: model.php:433
+msgid "Settings"
+msgstr "設定"
+
+#: model.php:452
+msgid "Favicon"
+msgstr "Favicon"
+
+#: model.php:533
+msgid "Save Changes"
+msgstr "設定の保存"
+
+#: model.php:464
+msgid "You do not have permission to customize favicons."
+msgstr "ファビコンを独自設定する権限がありません。"
+
+#: includes/class.media.php:349
+msgid "PNG Images"
+msgstr "PNG 画像"
+
+#: includes/class.media.php:357
+msgid "GIF Images"
+msgstr "GIF 画像"
+
+#: includes/class.media.php:365
+msgid "JPG Images"
+msgstr "JPG 画像"
+
+#: includes/class.media.php:373
+msgid "ICO Images"
+msgstr "ICO 画像"
+
+#: includes/class.media.php:374
+msgid "Manage ICO Images"
+msgstr "ICO 画像の管理"
+
+#: includes/class.media.php:366
+msgid "Manage JPG Images"
+msgstr "JPG 画像の管理"
+
+#: includes/class.media.php:358
+msgid "Manage GIF Images"
+msgstr "GIF 画像の管理"
+
+#: includes/class.media.php:350
+msgid "Manage PNG Images"
+msgstr "PNG 画像の管理"
+
+#: includes/class.media.php:375
+msgid "ICO Image <span class=\"count\">(%s)</span>"
+msgid_plural "ICO Images <span class=\"count\">(%s)</span>"
+msgstr[0] "ICO 画像 <span class=\"count\">(%s)</span>"
+
+#: includes/class.media.php:367
+msgid "JPG Image <span class=\"count\">(%s)</span>"
+msgid_plural "JPG Images <span class=\"count\">(%s)</span>"
+msgstr[0] "JPG 画像 <span class=\"count\">(%s)</span>"
+
+#: includes/class.media.php:359
+msgid "GIF Image <span class=\"count\">(%s)</span>"
+msgid_plural "GIF Images <span class=\"count\">(%s)</span>"
+msgstr[0] "GIF 画像 <span class=\"count\">(%s)</span>"
+
+#: includes/class.media.php:351
+msgid "PNG Image <span class=\"count\">(%s)</span>"
+msgid_plural "PNG Images <span class=\"count\">(%s)</span>"
+msgstr[0] "PNG 画像 <span class=\"count\">(%s)</span>"
+
+#. Description of the plugin
+msgid "Easily set site favicon and even rotate through multiple icons"
+msgstr "簡単にサイト用アイコンを設定し、また複数のアイコンのランダム表示もできます。"

@@ -40,41 +40,43 @@ get_header(); ?>
          */
         do_action('jobhunt_homepage_v1'); ?>
         <div class="site-main__about">
-            <div class="img">
+            <div class="img fadeup">
                 <img src="<?php echo get_template_directory_uri() ?>/img/top/about-h2.png" alt="">
             </div>
-            <div class="text">
+            <div class="text fadeup">
                 <p>
-                    当サイトでは、幅広い分野の求人を提供し、市原市での働き方を全く新しい視点から探求します。<br>
-                    どんな夢を抱いていても、どんなキャリアを目指していても、ここ市原市でその実現のチャンスを見つけましょう。<br>
-                    <br>
-                    「いちはらで働こう！」という一歩を踏み出す勇気、私たちはあなたと共にその先へ進むお手伝いをします。<br>
+                    当サイトでは、<br>幅広い分野の求人を提供し、市原市での<br>働き方を全く新しい視点から探求します。<br class="pc">
+                    どんな夢を抱いていても、どんなキャリアを<br>目指していても、ここ市原市で<br>その実現のチャンスを見つけましょう。<br class="pc">
+                    <br class="pc">
+                    「いちはらで働こう！」<br>という一歩を踏み出す勇気、私たちは<br>あなたと共にその先へ進むお手伝いをします。<br>
                 </p>
             </div>
-            <div class="btn">
+            <div class="btn fadeup">
                 <a href="#">いちワクについて</a>
             </div>
         </div>
         <div class="site-main__joblist">
-            <div class="section-title">
+            <div class="section-title fadeup">
                 <p>ICHIHARA JOB LIST</p>
                 <h2>求人情報</h2>
             </div>
-            <div>
-                <div class="inner job-list">
-                    <?php
-                    $shortcode  = !empty($jlb_options['shortcode']) ? $jlb_options['shortcode'] : '[jobs featured="true" per_page="6" show_filters="false"]';
-                    $home_v1        = jobhunt_get_home_v1_meta();
-                    $jlb_options    = $home_v1['jlb'];
-                    $args = apply_filters('jobhunt_home_v1_job_list_block_args', array(
-                        'shortcode'             => $shortcode
-                    ));
-                    jobhunt_job_list_block($args);
-                    ?>
+            <div class="fadeup">
+                <figure>
+                    <div class="job-list">
+                        <?php
+                        $shortcode  = !empty($jlb_options['shortcode']) ? $jlb_options['shortcode'] : '[jobs featured="true" per_page="9" show_filters="false"]';
+                        $home_v1        = jobhunt_get_home_v1_meta();
+                        $jlb_options    = $home_v1['jlb'];
+                        $args = apply_filters('jobhunt_home_v1_job_list_block_args', array(
+                            'shortcode'             => $shortcode
+                        ));
+                        jobhunt_job_list_block($args);
+                        ?>
+                    </div>
+                </figure>
+                <div class="btn">
+                    <a href="#">他の求人情報はこちら</a>
                 </div>
-            </div>
-            <div class="btn">
-                <a href="#">他の求人情報はこちら</a>
             </div>
         </div>
         <!-- <div class="site-main__knowledge">

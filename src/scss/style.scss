@@ -1,5 +1,5 @@
 @use "sass:math";
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
 @mixin tb {
   @media (max-width: 1000px) {
     @content;
@@ -26,6 +26,17 @@
 
 @function pxtovw($num) {
   @return calc(1vw * $num / var(--viewport) * 100);
+}
+
+body {
+  font-family: "Noto sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1.5px;
+  min-height: 100%;
+  @include sp() {
+    font-size: 14px;
+  }
 }
 .header-menu {
   color: #000;
@@ -279,6 +290,9 @@ section {
           width: pxtovw(279);
           top: 20px;
         }
+        @include sp() {
+          top: 75px;
+        }
       }
       &.float-2 {
         position: absolute;
@@ -288,6 +302,9 @@ section {
         @include tb() {
           width: pxtovw(279);
           top: 20px;
+        }
+        @include sp() {
+          top: 90px;
         }
       }
       &.float-3 {
@@ -346,9 +363,24 @@ section {
       text-align: center;
       margin: 150px 0 0;
       font-weight: bold;
+      line-height: 42px;
+      br {
+        display: none;
+        &.pc {
+          display: block;
+        }
+        @include sp() {
+          display: block;
+        }
+      }
       @include tb() {
         width: 90%;
         margin: 70px auto 0;
+      }
+      @include sp() {
+        width: 100%;
+        line-height: 42px;
+        font-weight: inherit;
       }
     }
     .btn {
@@ -362,9 +394,13 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 100px 0;
+    padding: 100px 0 200px;
     .btn {
       text-align: center;
+      margin: -75px 0 0;
+      @include sp() {
+        margin: -50px 0 0;
+      }
     }
     .job-list {
       margin: 50px auto 0;
@@ -372,29 +408,46 @@ section {
         display: none;
       }
       .job_listings {
-        display: grid;
-        grid-template-columns: 380px 380px 380px;
-        flex-wrap: wrap;
-        column-gap: 20px;
-        @include tb() {
-          grid-template-columns: 380px 380px;
-        }
-        @include sp() {
-          grid-template-columns: auto;
-        }
+        // display: grid;
+        // grid-template-columns: 380px 380px 380px;
+        // flex-wrap: wrap;
+        // column-gap: 20px;
+        // row-gap: 20px;
+        // @include tb() {
+        //   grid-template-columns: 380px 380px;
+        // }
+        // @include sp() {
+        //   grid-template-columns: auto;
+        // }
         li {
-          display: flex;
+          display: flex !important;
           justify-content: center;
-          background: white;
+          margin: auto;
           a {
-            width: 380px;
+            background: white;
+            min-height: 480px;
+            width: 350px;
+            margin: 0 10px;
             @include sp() {
-              width: 90%;
+              width: 300px;
+              height: 350px;
             }
             .job-listing-company-logo {
               img {
                 width: 100%;
               }
+            }
+          }
+          .job-types {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            @include sp() {
+              justify-content: center;
+            }
+            .job-type {
+              margin: inherit;
+              width: 100px !important;
             }
           }
         }
@@ -418,6 +471,9 @@ section {
           -webkit-box-flex: 0;
           -ms-flex: 0 0 90px;
           flex: none;
+          img {
+            max-width: inherit;
+          }
         }
       }
     }
@@ -491,7 +547,6 @@ footer {
   background-size: cover;
   width: 100%;
   padding: 80px 0;
-
   .footer-links {
     display: flex;
     @include sp() {
@@ -558,6 +613,10 @@ footer {
       padding-top: 200px;
       padding-bottom: 330px;
     }
+    @include sp() {
+      padding-top: 270px;
+      padding-bottom: 405px;
+    }
   }
 }
 .handheld-header {
@@ -571,4 +630,108 @@ footer {
     width: 50px;
     height: 50px;
   }
+}
+.input-min {
+  display: inline-block !important;
+  width: 120px !important;
+}
+
+.site-content {
+  margin-bottom: 0;
+}
+.site-content-inner {
+  justify-content: center;
+}
+.submit-button {
+  margin: auto;
+  display: inherit !important;
+}
+.contact-form {
+  padding: 0 0 200px;
+}
+.plz-fillin {
+  text-align: center;
+  margin: 0 0 80px;
+  font-weight: bold;
+}
+.load_more_jobs {
+  display: none;
+}
+.slick-track {
+  padding: 100px 0 0;
+}
+.slick-slide {
+  transition: all 0.5s;
+  &.slick-center {
+    margin: -100px 0 0;
+    @include sp() {
+      margin: -75px 0 0;
+    }
+    & + div {
+      margin: -50px 0 0;
+      @include sp() {
+        margin: 0 0 0;
+      }
+    }
+  }
+}
+div {
+  &:has(+ .slick-center) {
+    margin: -50px 0 0;
+    @include sp() {
+      margin: 0 0 0;
+    }
+  }
+}
+.site-content-page-header-inner {
+  opacity: 0;
+}
+.float {
+  img {
+    opacity: 0;
+  }
+}
+.fadeup {
+  opacity: 0;
+  figure {
+    --polygon: 0 0, 100% 0, 100% 0, 0 0;
+    clip-path: polygon(var(--polygon));
+    overflow: hidden;
+  }
+}
+
+.handheld-header {
+  @include sp() {
+    justify-content: space-between;
+    margin-left: 5px;
+  }
+  .site-branding {
+    @include sp() {
+      width: 120px;
+    }
+  }
+}
+.admin-bar .site-header .jobhunt-stick-this.stuck {
+  top: 0;
+}
+.jobhunt-register-login-form {
+  margin: 0 0 200px;
+}
+.login-btn {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  input {
+    width: 100%;
+  }
+}
+.lost-pass-btn {
+  display: grid !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 15px 0 0 !important;
+  text-align: center !important;
+}
+.contact-form-wrap {
+  margin: 0 0 100px;
 }

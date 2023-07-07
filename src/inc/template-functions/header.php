@@ -162,13 +162,13 @@ if (!function_exists('jobhunt_secondary_nav')) {
                     $login_page_url = apply_filters('jobhunt_header_login_page_url', $login_page_url);
                     ?>
                     <li class="menu-item menu-item-login">
-                        <a href="<?php echo esc_url($login_page_url); ?>" <?php echo jobhunt_is_header_register_login_modal_form() ? 'data-toggle="modal" data-target="#modal-register-login"' : '' ?>>
+                        <a href="<?php echo get_home_url() ?>/login">
                             <p><img src="<?php echo get_template_directory_uri() ?>/img/global/login.png" alt=""></p>
                             <span class="secondary-menu-text">ログイン</span>
                         </a>
                     </li>
                     <li class="menu-item menu-item-register">
-                        <a href="<?php echo esc_url($register_page_url); ?>" <?php echo jobhunt_is_header_register_login_modal_form() ? 'data-toggle="modal" data-target="#modal-register-login"' : '' ?>>
+                        <a href="<?php echo get_home_url() ?>/register">
                             <p><img src="<?php echo get_template_directory_uri() ?>/img/global/register.png" alt=""></p>
                             <span class="secondary-menu-text">登録はこちら</span>
                         </a>
